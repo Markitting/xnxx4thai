@@ -2,9 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import { createStyles, Grid, Link, Paper, Theme } from "@material-ui/core";
 import Image from "next/image";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import { Content } from '../interfaces/product'
-
+import { Content } from "../interfaces/product";
+import { Pagination } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,8 +14,8 @@ const useStyles = makeStyles((theme: Theme) =>
       // padding: theme.spacing(2),
       textAlign: "center",
       color: theme.palette.text.secondary,
-      backgroundColor: "#fff",
-      border: "solid 1px #e1e1e1",
+      backgroundColor: "#050090",
+      boxShadow: "none !important",
       padding: "0px",
     },
     mobileDetail: {
@@ -25,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
       WebkitLineClamp: 1,
       WebkitBoxOrient: "vertical",
       overflow: "hidden",
-      color: "#222",
+      color: "#436FE0",
       textAlign: "left",
       paddingRight: "5px",
       paddingLeft: "5px",
@@ -56,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
     textHeader: {
       fontSize: "1.5em",
       color: "#213aa3",
-      fontWeight:'bold',
+      fontWeight: "bold",
 
       ["@media (width:375px)"]: {
         marginLeft: "0%",
@@ -75,7 +74,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     textLocation: {
       fontSize: "13px",
-      color: "#7e7e7e",
+      color: "#fff",
       width: "217",
       display: "-webkit-box",
       WebkitLineClamp: 2,
@@ -96,42 +95,46 @@ const useStyles = makeStyles((theme: Theme) =>
     gridFlex: {
       display: "flex",
     },
-        arrowPos: {
+    arrowPos: {
       width: "17px",
       Height: "17px",
-      marginTop: '-2px'
+      marginTop: "-2px",
     },
-    textCost:{
+    textCost: {
       textAlign: "left",
-      fontSize: "2em",
-      color: "#00C900",
-      fontWeight:'bold',
-      paddingLeft: '5px',
-      marginTop:'0px',
+      fontSize: "16px",
+      color: "#436FE0",
+      fontWeight: "bold",
+      paddingLeft: "5px",
+      marginTop: "0px",
     },
-    btnMore:{
+    btnMore: {
       color: "#fff",
-      backgroundColor:'#00C900',
-      paddingLeft:' 40%',
-      paddingRight:' 40%',
-      fontSize: '1.5em',
-      '&:hover' : {
-        backgroundColor:'#00C900',
+      backgroundColor: "#00C900",
+      paddingLeft: " 40%",
+      paddingRight: " 40%",
+      fontSize: "1.5em",
+      "&:hover": {
+        backgroundColor: "#00C900",
       },
       ["@media (max-width:500px)"]: {
-        paddingLeft:'20%',
-      paddingRight:'20%',
-      fontSize: '1em',
+        paddingLeft: "20%",
+        paddingRight: "20%",
+        fontSize: "1em",
       },
     },
-    btnCenter:{
-      textAlign:'center',
-    }
+    btnCenter: {
+      textAlign: "center",
+    },
+    pagination: {
+      justifyContent: "center",
+      marginTop: "1em",
+    },
+    gridCen: {
+      justifyContent: "center",
+    },
   })
 );
-
-
- 
 
 export default function MediaCard(props: { contents: Content[] }) {
   // const contents = props.contents
@@ -141,58 +144,46 @@ export default function MediaCard(props: { contents: Content[] }) {
   return (
     <div className={classes.root}>
       <p className={classes.textHeader}>
-        ประกาศมาใหม่
-        <Link href="/productlist">
-          <p className={classes.more}>
-            ดูทั้งหมด
-            <ArrowForwardIcon className={classes.arrowPos} />
-          </p>
-        </Link>
+        <Pagination
+          className={classes.pagination}
+          count={10}
+          variant="outlined"
+          shape="rounded"
+          size="large"
+          showFirstButton
+          showLastButton
+        />
       </p>
-      <Grid container spacing={3} className={classes.gridMobile}> 
-      {props.contents.map((item : any,index) => {
-          if (index <=7) return  <></>
-          return  <Grid item xs={12} lg={3} sm={3}>
-            <Paper className={classes.paper}>
-            <Image
-              className={classes.imageCategory}
-              src={item.images[0].raw_url}
-              alt=""
-              width={"450"}
-              height={"300"}
-            />
-            {/* <Link href="/product/name/{id}"> */}
-            {/* <Link href="/product/name/{{item.id}}"> */}
-            <Link href={`/product/name/${item.id}`}>
-            <p className={classes.mobileDetail}>
-            {item.content_title}
-            </p>
-            </Link>
-            <p className={classes.textLocation}>{item.content_description}</p>
-            <p className={classes.textCost} >฿ {Intl.NumberFormat('th-TH', {minimumFractionDigits: 0}).format(item.price)}</p>
-            
-            <Grid className={classes.gridFlex}>
-              <Grid item xs lg={6}>
+      <Grid container spacing={3} className={classes.gridMobile}>
+        {props.contents.map((item: any, index) => {
+          if (index <= 7) return <></>;
+          return (
+            <Grid item xs={12} lg={3} sm={3}>
+              <Paper className={classes.paper}>
                 <Image
-                  className="img-chat"
-                  src="/images/Chat.png"
+                  className={classes.imageCategory}
+                  src={item.images[0].raw_url}
                   alt=""
-                  width={"130"}
-                  height={"45"}
+                  width={"450"}
+                  height={"300"}
                 />
-              </Grid>
-              <Grid item xs lg={6}>
-                <Image
-                  className="img-call"
-                  src="/images/Call.png"
-                  alt=""
-                  width={"130"}
-                  height={"45"}
-                />
-              </Grid>
+                {/* <Link href="/product/name/{id}"> */}
+                {/* <Link href="/product/name/{{item.id}}"> */}
+                <Link href={`/product/name/${item.id}`}>
+                  <p className={classes.mobileDetail}>{item.content_title}</p>
+                </Link>
+                <p className={classes.textLocation}>
+                  {item.content_description}
+                </p>
+                <p className={classes.textCost}>
+                  {" "}
+                  {Intl.NumberFormat("th-TH", {
+                    minimumFractionDigits: 0,
+                  }).format(item.price)}
+                </p>
+              </Paper>
             </Grid>
-          </Paper>
-        </Grid>   
+          );
         })}
       </Grid>
     </div>

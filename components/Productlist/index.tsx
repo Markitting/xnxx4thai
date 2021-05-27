@@ -7,10 +7,10 @@ import {
 import Layout from "../Layout";
 import Footer from "../Footer";
 import React from "react";
-import Search2 from "../Search2";
 import Description from "../Description";
 import Productlists from "../Productlists";
 import { Content } from '../../interfaces/product'
+import Category from "../Category";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -109,7 +109,7 @@ const Productlist = (props: any) => {
 
   return (
     <Layout title="Productlist | KaideeWa.com">
-      <Search2 />
+         <Category/>
       <Container maxWidth="lg" className="container">
         <div className={classes.root}>
           {/* <Gallery2 data={content} /> */}

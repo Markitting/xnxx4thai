@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-      backgroundColor: "#00CE00",
+      backgroundColor: "#010048",
 
       ["@media (width:375px)"]: {
         marginTop: "5%",
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2),
       textAlign: "center",
       color: theme.palette.text.secondary,
-      backgroundColor: "#00CE00 !important",
+      backgroundColor: "#010048 !important",
       boxShadow: "none",
     },
     p: {
@@ -56,27 +56,25 @@ export default function AutoGrid() {
     <div className={classes.root}>
       <hr />
       <Grid container spacing={3}>
-        <Grid item xs={9}>
+        <Grid item xs={12} lg={12}>
           <Paper className={classes.paper}>
             <p className={classes.p}>
-              เกี่ยวกับเรา | ติดต่อเรา | ติดต่อลงโฆษณา |
-              นโยบายความเป็นส่วนตัว | ข้อกำหนดและเงื่อนไขการใช้งาน
+            XNXX Images / Animated Gifs / Stories
             </p>
-            <p className={classes.p}>© 2021 KAIDEEWA.COM</p>
+            <p className={classes.p}>
+            We hope you enjoyed our free porn movies and pics! Think about bookmarking our site!
+If you are not a mature adult or are offended by pornography please don't come back!
+
+Have something to say? Please use our Forum, or contact us directly (warning : we can't read every email).
+Advertising, Traffic Trades, Sponsors Webmasters click here. XNXX.COM Copyright 2000-2021. All rights reserved. Thanks for visiting our free sex site.
+Become a porn model - Terms of service - Privacy policy - Privacy notice - Content removal
+            </p>
           </Paper>
         </Grid>
-        <Grid item xs={3} className={classes.centerlogo}>
-          <Paper className={classes.paper}>
-            <Image
-              className={classes.logo1}
-              src="/images/logo1.png"
-              alt=""
-              width={"300"}
-              height={"70"}
-            />
-          </Paper>
-        </Grid>
+       
       </Grid>
     </div>
   );
 }
+
+

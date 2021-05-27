@@ -14,7 +14,7 @@
     "@material-ui/styles": "^4.11.3",
     "@types/redis": "^2.8.28",
     "axios": "^0.21.1",
-    "next": "^10.1.1",
+    "next": "^10.2.0",
     "react": "^17.0.2",
     "react-alice-carousel": "^2.4.0",
     "react-currency-format": "^1.0.0",
